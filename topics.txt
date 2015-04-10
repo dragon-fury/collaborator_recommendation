@@ -1,0 +1,10 @@
+0.099*sitter + 0.089*de + 0.026*space + 0.015*entropy + 0.012*gaussian + 0.012*bounded + 0.012*bounds + 0.012*calculus + 0.011*clifford + 0.011*space.
+0.057*pages, + 0.032*authors: + 0.031*comments: + 0.029*latex, + 0.024*phys. + 0.016*nucl.phys. + 0.015*j. + 0.013*(1996) + 0.013*appear + 0.012*(1995)
+0.042*taking + 0.027*wznw + 0.026*studying + 0.023*account + 0.017*processes + 0.015*classify + 0.014*qft + 0.012*viewpoint + 0.012*identifying + 0.012*automatically
+0.060*effects + 0.031*consistency + 0.022*nonperturbative + 0.019*confinement + 0.019*occur + 0.018*agrees + 0.015*could + 0.014*result + 0.013*observable + 0.011*result.
+0.060*mechanism + 0.021*microscopic + 0.021*tachyon + 0.020*schwarzschild + 0.016*end + 0.014*described. + 0.013*minimum + 0.012*takes + 0.012*developments + 0.010*macroscopic
+0.030*hilbert + 0.020*observables + 0.020*schwinger + 0.019*space + 0.016*illustrate + 0.013*laws + 0.012*consequence + 0.012*model + 0.009*quantization. + 0.009*uses
+0.080*effective + 0.073*action + 0.035*field + 0.025*scalar + 0.024*potential + 0.022*theory + 0.017*one-loop + 0.016*energy + 0.016*terms + 0.014*corrections
+0.029*pages, + 0.023*orbifolds + 0.023*phys.lett. + 0.019*rigid + 0.016*11 + 0.016*comments: + 0.015*relationship + 0.015*(1997) + 0.014*10 + 0.013*sl(2,r)
+0.023*results + 0.014*restricted + 0.013*analytic + 0.013*simply + 0.011*continuation + 0.011*two + 0.010*four-point + 0.010*algebras, + 0.009*general + 0.009*q
+0.022*approaches + 0.020*green's + 0.017*nonrelativistic + 0.016*running + 0.014*interactions. + 0.013*remarkable + 0.011*quantum + 0.010*inequivalent + 0.009*mechanism. + 0.009*representing

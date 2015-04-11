@@ -12,8 +12,6 @@ import scipy.stats as stats
 import matplotlib.pyplot as plt
 import math
 
-stops = [word for word in nltk.corpus.stopwords.words('english')]
-
 my_corpus = gensim.corpora.MmCorpus('abstracts.mm')
 dictionary = gensim.corpora.Dictionary.load('abstracts.dict')
 kl=[]

@@ -1,23 +1,30 @@
-import gensim
-import math
-import nltk
-import json
+import gensim, math, re, json, ast, nltk
+from nltk.corpus import stopwords
 from gensim import corpora,models,similarities
-abstracts={}
 
-with open("abstract_clean.json",'r') as f:
+abstracts = {}
+
+with open("training_abstracts_1992_2000.json",'r') as f:
 	abstracts=json.load(f)
 
+noun_adj_symbol_list = ['NN', 'NNS', 'NNP', 'JJ', 'JJR', 'JJS']
+stopwordlist = stopwords.words('english')
 
-i=0
-indices=[i for i in abstracts]
-stoplist=nltk.corpus.stopwords.words("english") + ['.','\\','.',',','?',')','(','[',']','{','}']
-dictionary=corpora.Dictionary(line.lower().split() for line in [abstracts[i]["content"] for i in indices])
-stop_ids = [dictionary.token2id[stopword] for stopword in stoplist if stopword in dictionary.token2id]
-dictionary.filter_tokens(stop_ids)
+remove_non_alphabets = re.compile("[^a-zA-Z\s]")
+words_to_update = []
+
+
+for abstract in abstracts:
+	abstract = abstracts[abstract]
+	alpha_content = remove_non_alphabets.sub('', abstract['content'].lower())
+	content = [word for word in alpha_content.split() if word not in stopwordlist]
+	pos_tagged_words = nltk.pos_tag(content)
+	words_to_update.append([word for (word, pos_tag) in pos_tagged_words if pos_tag in noun_adj_symbol_list])
+
+dictionary=corpora.Dictionary(words_to_update)
+
 dictionary.compactify()
-print(dictionary)
 dictionary.save('abstracts.dict')
 id2word = gensim.corpora.Dictionary.load('abstracts.dict')
-my_corpus = [dictionary.doc2bow(line.lower().split()) for line in [abstracts[i]["content"] for i in indices]] 
+my_corpus = [dictionary.doc2bow(words) for words in words_to_update] 
 corpora.MmCorpus.serialize('abstracts.mm', my_corpus) #CHANGE HERE

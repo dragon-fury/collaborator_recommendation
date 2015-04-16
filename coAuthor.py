@@ -2,6 +2,8 @@ import json, ast
 import re
 import pprint
 import sys
+import networkx as nx
+
 
 with open("/Users/Meghna/Desktop/Spring 2015/Semantic Web Mining/Project/training_abstracts_1992_2000.json") as json_file:
     json_data = json.load(json_file)
@@ -55,8 +57,43 @@ for obj in json_data:
 		i+=1 
 
 f=open('author_author','w+')
-f1=open('set_of_authors','w+')
+f1=open('Set_of_authors','w+')
+
 json.dump(author_adjacency_matrix,f,indent=4)
 sys.stdout = f1
 print ",\n ".join(str(x) for x in set_of_authors)
 #print set_of_authors
+f1.close()
+
+f2=open('console','w+')
+sys.stdout = f2
+#print(author_adjacency_matrix['R. L. Wilson'])
+G=nx.Graph()
+f = open('Set_of_authors','r')
+
+for line in f:
+	m=re.split(",",line)
+	#print(m[0])
+	m = map(lambda m: m.strip(), m)
+	G.add_node(m[0])
+    #print(line)
+f.close()
+#print(G.nodes())
+print(G.number_of_nodes())
+#print(G.nodes())
+for n in G.nodes():
+	#print(n)
+	#print(m[0])
+	#print(author_adjacency_matrix[m[0]])
+	
+	for value in author_adjacency_matrix[n]:
+		#print(m[0])
+		G.add_edge(n,value)
+		#print(G.has_edge(n,value))
+		#print(G.number_of_edges())
+#print(author_adjacency_matrix[u'R. L. Wilson'])
+print(G.number_of_edges())
+print(G.number_of_nodes())
+preds = adamic_adar_index(G)
+for u, v, p in preds:
+	'(%d, %d) -> %.8f' % (u, v, p)
